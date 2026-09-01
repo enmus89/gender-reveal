@@ -1,6 +1,6 @@
 {
-  "name": "Baby Gender Reveal Quiz",
-  "description": "Gender Reveal",
+  "name": "Baby Mustafaraj - Reveal",
+  "description": "Boy or Girl???",
   "requestFramePermissions": [],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
