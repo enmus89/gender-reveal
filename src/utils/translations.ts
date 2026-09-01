@@ -133,7 +133,7 @@ export const translations: Record<Language, Translations> = {
   en: {
     header: {
       appTitle: 'Baby Reveal Protocol',
-      appSubtitle: 'BABY_BOT // GENDER_REVEAL',
+      appSubtitle: 'BABY_REVEAL // GENDER_REVEAL',
       revealedTag: 'REVEALED',
       quizTag: 'QUIZ_V1',
       parentsPortal: 'PARENTS PORTAL',
@@ -322,7 +322,7 @@ export const translations: Record<Language, Translations> = {
   sq: {
     header: {
       appTitle: 'Zbulimi i Gjinisë së Bebes',
-      appSubtitle: 'BABY_BOT // GENDER_REVEAL',
+      appSubtitle: 'BABY_REVEAL // GENDER_REVEAL',
       revealedTag: 'E ZBULUAR',
       quizTag: 'KUIZI_V1',
       parentsPortal: 'PORTALI I PRINDËRVE',
