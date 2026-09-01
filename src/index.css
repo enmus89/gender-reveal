@@ -70,6 +70,28 @@
   animation: pulseGlowBlue 2s ease-in-out infinite;
 }
 
+/*
+ * Mobile / touch performance.
+ * Large `filter: blur()` blobs and `backdrop-filter` cards make iOS Safari
+ * repaint huge surfaces on every frame, which shows up as laggy typing,
+ * janky scrolling, and a frozen/blank reveal screen. On touch devices we
+ * drop the decorative blur blobs entirely and replace backdrop blur with a
+ * cheap solid translucency — the layout and colours are unchanged.
+ */
+@media (hover: none), (pointer: coarse), (max-width: 820px) {
+  [class*="blur-["]:not([class*="backdrop"]),
+  .blur-3xl,
+  .blur-2xl {
+    display: none !important;
+  }
+
+  [class*="backdrop-blur"] {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    background-color: rgba(15, 23, 42, 0.92) !important;
+  }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;

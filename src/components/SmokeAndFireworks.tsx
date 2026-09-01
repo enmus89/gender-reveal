@@ -36,18 +36,26 @@ export const SmokeAndFireworks: React.FC<{ active: boolean }> = ({ active }) => 
   useEffect(() => {
     if (!active) return;
 
-    const count = isSmallScreen ? 110 : 200;
     const defaults = {
       origin: { y: 0.7 },
       colors: ['#2563EB', '#38BDF8', '#60A5FA', '#93C5FD', '#1D4ED8', '#F59E0B', '#FDE047'],
     };
 
+    // Phones (esp. iOS Safari) crash/blank on sustained heavy confetti, so
+    // they get one modest, safe volley and nothing more.
+    if (prefersReducedMotion || isSmallScreen) {
+      try {
+        confetti({ ...defaults, particleCount: 70, spread: 70, startVelocity: 45 });
+        confetti({ ...defaults, particleCount: 40, spread: 100, decay: 0.92, scalar: 0.9 });
+      } catch {
+        /* confetti is decorative — never let it break the reveal */
+      }
+      return;
+    }
+
+    const count = 200;
     function fire(particleRatio: number, opts: confetti.Options) {
-      confetti({
-        ...defaults,
-        ...opts,
-        particleCount: Math.floor(count * particleRatio),
-      });
+      confetti({ ...defaults, ...opts, particleCount: Math.floor(count * particleRatio) });
     }
 
     fire(0.25, { spread: 26, startVelocity: 55 });
@@ -56,37 +64,33 @@ export const SmokeAndFireworks: React.FC<{ active: boolean }> = ({ active }) => 
     fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2, shapes: ['circle'] });
     fire(0.1, { spread: 120, startVelocity: 45 });
 
-    if (prefersReducedMotion) return;
-
     // Sustained fountains, but bounded so the tab never bogs down over time.
-    const perBurst = isSmallScreen ? 24 : 50;
-    const maxBursts = isSmallScreen ? 4 : 7;
     let bursts = 0;
     const interval = setInterval(() => {
       confetti({
-        particleCount: perBurst,
+        particleCount: 50,
         angle: 60,
         spread: 55,
         origin: { x: 0, y: 0.75 },
         colors: ['#3B82F6', '#0284C7', '#60A5FA', '#38BDF8', '#E0F2FE'],
       });
       confetti({
-        particleCount: perBurst,
+        particleCount: 50,
         angle: 120,
         spread: 55,
         origin: { x: 1, y: 0.75 },
         colors: ['#1D4ED8', '#2563EB', '#93C5FD', '#7DD3FC', '#FBBF24'],
       });
       bursts += 1;
-      if (bursts >= maxBursts) clearInterval(interval);
+      if (bursts >= 7) clearInterval(interval);
     }, 1400);
 
     return () => clearInterval(interval);
   }, [active]);
 
-  // Smoke canvas
+  // Smoke canvas — desktop only. The full-screen canvas is what freezes phones.
   useEffect(() => {
-    if (!active || prefersReducedMotion) return;
+    if (!active || prefersReducedMotion || isSmallScreen) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -213,7 +217,7 @@ export const SmokeAndFireworks: React.FC<{ active: boolean }> = ({ active }) => 
     };
   }, [active]);
 
-  if (!active || prefersReducedMotion) return null;
+  if (!active || prefersReducedMotion || isSmallScreen) return null;
 
   return (
     <canvas

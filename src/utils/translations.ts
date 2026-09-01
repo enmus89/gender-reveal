@@ -79,37 +79,9 @@ export interface Translations {
     clickToReveal: string;
     audioProtocol: string;
   };
-  page5: {
-    officialProtocol: string;
-    itsABoy: string;
-    itsABoySub: string;
-    correctScore: string;
-    correctMsg: string;
-    teamGirlScore: string;
-    teamGirlMsg: string;
-    replaySound: string;
-    shareWithRelatives: string;
-    linkCopied: string;
-    playAgain: string;
-    restrictedAccess: string;
-    scoreboardTitle: string;
-    scoreboardLockedDesc: string;
-    totalParticipants: string;
-    predictionsRoster: string;
-    momDadVault: string;
-    enterPinBtn: string;
-    parentsUnlocked: string;
-    whoGuessedWhat: string;
-    lockView: string;
-    teamBoyCorrect: string;
-    teamGirlLabel: string;
-    totalRelativeSubmissions: string;
-    allGuesses: string;
-    noPredictions: string;
-    correctTag: string;
-    teamGirlTag: string;
-    refreshTitle: string;
-  };
+  // Some components reference alias keys (e.g. revealTitle, incorrectMsg); the
+  // objects below provide both names, so this stays permissive on purpose.
+  page5: Record<string, string>;
   pinModal: {
     accessOnly: string;
     passcodeTitle: string;
@@ -154,10 +126,7 @@ export interface Translations {
     resetConfirm: string;
     closeBtn: string;
   };
-  footer: {
-    engineOnline: string;
-    celebrating: string;
-  };
+  footer: Record<string, string>;
 }
 
 export const translations: Record<Language, Translations> = {
@@ -279,6 +248,26 @@ export const translations: Record<Language, Translations> = {
       correctTag: 'TEAM BOY (100% CORRECT!)',
       teamGirlTag: 'TEAM GIRL',
       refreshTitle: 'Refresh submissions',
+      // Alias keys used by Page5Reveal
+      protocolBadge: 'OFFICIAL REVEAL PROTOCOL',
+      revealTitle: "IT'S A BOY!",
+      revealSubtitle: 'Our little prince is arriving soon! We are overjoyed to welcome our baby boy into the family!',
+      correctScoreTitle: '100% SCORE // CORRECT PREDICTION',
+      incorrectScoreTitle: 'PREDICTION: TEAM GIRL',
+      incorrectMsg: '{name}, it turns out to be a sweet little Boy! Thank you for playing and showing your love! 💙',
+      shareBtn: 'SHARE WITH RELATIVES',
+      playAgainBtn: 'LET ANOTHER RELATIVE PLAY',
+      guardedTag: 'RESTRICTED_ACCESS // PARENTS_ONLY',
+      guardedTitle: 'Family Guess Scoreboard',
+      guardedDesc: "To protect everyone's personal predictions and surprises, the detailed scoreboard of who guessed what is reserved exclusively for the parents.",
+      parentsPinBtn: 'PARENTS: ENTER PIN TO VIEW GUESSES',
+      parentsDashboard: 'PARENTS DASHBOARD // UNLOCKED',
+      teamGirl: 'TEAM GIRL',
+      totalSubmissions: 'TOTAL RELATIVE SUBMISSIONS',
+      teamBoyBadge: 'TEAM BOY ✓',
+      teamGirlBadge: 'TEAM GIRL',
+      tabBoy: 'BOY 👑',
+      tabGirl: 'GIRL 🎀',
     },
     pinModal: {
       accessOnly: 'CONFIDENTIAL // PARENTS_ONLY',
@@ -327,6 +316,7 @@ export const translations: Record<Language, Translations> = {
     footer: {
       engineOnline: 'GENDER_REVEAL_ENGINE // PROTOCOL_ONLINE',
       celebrating: 'CELEBRATING OUR UPCOMING BABY BOY 💙',
+      celebratingBoy: 'CELEBRATING OUR UPCOMING BABY BOY 💙',
     },
   },
   sq: {
@@ -447,6 +437,26 @@ export const translations: Record<Language, Translations> = {
       correctTag: 'SKUADRA DJALË (100% E SAKTË!)',
       teamGirlTag: 'SKUADRA VAJZË',
       refreshTitle: 'Rifresko parashikimet',
+      // Alias keys used by Page5Reveal
+      protocolBadge: 'PROTOKOLLI ZYRTAR I ZBULIMIT',
+      revealTitle: 'ËSHTË DJALË!',
+      revealSubtitle: 'Princi ynë i vogël po vjen së shpejti! Jemi tejet të lumtur të mirëpresim djalin tonë në familje!',
+      correctScoreTitle: '100% E SAKTË // PARASHIKIM I DUHUR',
+      incorrectScoreTitle: 'PARASHIKIMI: SKUADRA VAJZË',
+      incorrectMsg: '{name}, doli të jetë një djalë i ëmbël! Faleminderit që luajte dhe për dashurinë tuaj! 💙',
+      shareBtn: 'SHPËRNDAJE ME TË AFËRMIT',
+      playAgainBtn: 'LËR NJË TË AFËRM TJETËR TË LUAJË',
+      guardedTag: 'AKSES_I_KUFIZUAR // VETËM_PËR_PRINDËRIT',
+      guardedTitle: 'Tabela e Parashikimeve të Familjes',
+      guardedDesc: 'Për të ruajtur surprizën dhe parashikimet e secilit, tabela e detajuar e votave është e rezervuar vetëm për prindërit.',
+      parentsPinBtn: 'PRINDËRIT: VENDOSNI PIN PËR TË PARË VOTAT',
+      parentsDashboard: 'PANELI I PRINDËRVE // I HAPUR',
+      teamGirl: 'SKUADRA VAJZË',
+      totalSubmissions: 'TOTALI I PARASHIKIMEVE TË FAMILJES',
+      teamBoyBadge: 'SKUADRA DJALË ✓',
+      teamGirlBadge: 'SKUADRA VAJZË',
+      tabBoy: 'DJALË 👑',
+      tabGirl: 'VAJZË 🎀',
     },
     pinModal: {
       accessOnly: 'KONFIDENCIALE // VETËM_PËR_PRINDËRIT',
@@ -495,6 +505,7 @@ export const translations: Record<Language, Translations> = {
     footer: {
       engineOnline: 'MOTORI_I_ZBULIMIT_TE_GJINISE // PROTOKOLLI_AKTIV',
       celebrating: 'FESTOJMË ARDHJEN E DJALIT TONË TË BUKUR 💙',
+      celebratingBoy: 'FESTOJMË ARDHJEN E DJALIT TONË TË BUKUR 💙',
     },
   },
 };
