@@ -162,7 +162,7 @@ export const HeaderNav: React.FC<HeaderNavProps> = ({
                 : 'bg-orange-500/20 text-orange-300 border border-orange-400/30 shadow-[0_0_15px_rgba(249,115,22,0.25)]'
             }`}
           >
-            👶
+            🎁
           </div>
           <div>
             <div className="flex items-center gap-2">

@@ -168,9 +168,6 @@ export default function App() {
             <span className={`w-2 h-2 rounded-full ${isRevealed ? 'bg-blue-400 shadow-[0_0_8px_#60A5FA]' : 'bg-orange-400 shadow-[0_0_8px_#FB923C]'}`} />
             <span>{tFooter.engineOnline}</span>
           </div>
-          <p className={isRevealed ? 'text-blue-300/80' : 'text-orange-300/80'}>
-            {tFooter.celebratingBoy}
-          </p>
         </div>
       </footer>
     </div>
