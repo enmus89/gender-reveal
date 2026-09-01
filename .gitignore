@@ -1,0 +1,15 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+
+# Runtime data (guesses + parent PIN) — keep private, never commit
+submissions_data.json
+parent_config.json
+
+# staged separately — added via GitHub web UI (PAT lacks workflow scope)
+deploy.workflow.yml

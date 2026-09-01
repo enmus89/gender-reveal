@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
+@keyframes pulseGlowOrange {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(249, 115, 22, 0.3), 0 0 60px rgba(251, 146, 60, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 45px rgba(249, 115, 22, 0.6), 0 0 90px rgba(251, 146, 60, 0.35);
+  }
+}
+
+@keyframes pulseGlowBlue {
+  0%, 100% {
+    box-shadow: 0 0 35px rgba(37, 99, 235, 0.4), 0 0 80px rgba(59, 130, 246, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 65px rgba(37, 99, 235, 0.7), 0 0 120px rgba(96, 165, 250, 0.45);
+  }
+}
+
+@keyframes smokeRise {
+  0% {
+    transform: translateY(100%) scale(0.6) rotate(0deg);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.85;
+  }
+  80% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-80%) scale(2.2) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.glow-orange {
+  animation: pulseGlowOrange 2.5s ease-in-out infinite;
+}
+
+.glow-blue {
+  animation: pulseGlowBlue 2s ease-in-out infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
